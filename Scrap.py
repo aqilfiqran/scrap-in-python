@@ -54,9 +54,9 @@ with open(path, 'w') as file:
                 try:
                     # clean url and put on directory file
                     scrap([urls, file])
+                    page += 1
                 except (AttributeError, IndexError):
                     pass
-                page += 1
                 if page == page_limit:
                     sys.exit(f'Program reach maximum {page_limit} page')
             else:
