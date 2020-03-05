@@ -60,17 +60,13 @@ with open(path, 'w') as file:
                 if page == page_limit:
                     sys.exit(f'Program reach maximum {page_limit} page')
             else:
-                try:
-                    if(soup.select_one(
-                            '.paging__link--next')):
-                        link = soup.select_one(
-                            '.paging__link--next')['href']
-                        continue
-                    else:
-                        break
-                except TypeError:
-                    pass
+                if(soup.find('a', {'rel': 'next'})):
+                    link = soup.find('a', {'rel': 'next'})['href']
+                    continue
+                else:
+                    break
         if day == day_limit:
             sys.exit(f'Program reach maximum {day_limit} day')
+
         date += timedelta(days=-1)
         day += 1
