@@ -13,7 +13,7 @@ def scrap(data):
     title = soup.select_one('.read__title').get_text()
     credit = soup.select_one('.read__credit')
     editor = credit.findAll('a')[1].get_text()
-    data[1].write(f'{editor}||{title}\n')
+    data[1].write(f'{editor}:{title}\n')
 
 
 # argument documentary
